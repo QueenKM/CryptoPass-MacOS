@@ -1,0 +1,57 @@
+//
+//  AddPasswordViewModel.swift
+//  CryptoPass
+//
+//  Created by Kristina Mateva on 24.12.24.
+//
+
+import Foundation
+
+class AddPasswordViewModel: ObservableObject {
+    @Published var serviceName: String = ""
+    @Published var username: String = ""
+    @Published var password: String = ""
+    @Published var selectedCategory: PasswordCategory = .other
+    @Published var successMessage: String = ""
+    @Published var errorMessage: String = ""
+
+    private let encryptionService = EncryptionService()
+    private let passwordStorage = PasswordStorage()
+
+    func savePassword() {
+        // Проверка за празни полета
+        guard !serviceName.isEmpty, !username.isEmpty, !password.isEmpty else {
+            errorMessage = "All fields are required."
+            successMessage = ""
+            return
+        }
+
+        // Проверка за минимална дължина на паролата
+        guard password.count >= 8 else {
+            errorMessage = "Password must be at least 8 characters long."
+            successMessage = ""
+            return
+        }
+
+        do {
+            // Шифроване на паролата
+            let encryptedPassword = try encryptionService.encrypt(password)
+
+            // Създаване на модела
+            let newPassword = PasswordModel(
+                serviceName: serviceName,
+                username: username,
+                encryptedPassword: encryptedPassword,
+                category: selectedCategory // Използвайте selectedCategory вместо category
+            )
+
+            // Съхранение на паролата
+            passwordStorage.save(passwordModel: newPassword)
+            successMessage = "Password saved successfully!"
+            errorMessage = ""
+        } catch {
+            errorMessage = "Failed to save password: \(error.localizedDescription)"
+            successMessage = ""
+        }
+    }
+}
