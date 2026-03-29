@@ -17,14 +17,21 @@ SwiftUI password manager project for macOS with Core Data persistence, encryptio
 #### Login + Password Management
 The project includes SwiftUI screens for login, registration, password listing, password details, and add-password workflows.
 
+<img src="./media/login-screen.png" width="320">
+
 #### Core Data + Services
 The codebase includes Core Data entities, a persistence stack, encryption utilities, sync-related services, and profile storage logic.
+
+<img src="./media/passwords-screen.png" width="320">
 
 #### Test Coverage
 The repository includes unit tests for services and view models, along with a dedicated UI test target.
 
-#### Screenshots
-You can add app screenshots or short GIFs here later to match the presentation style of the original fork more closely.
+#### Settings
+<img src="./media/settings-screen.png" width="320">
+
+#### Profile
+<img src="./media/profile-screen.png" width="320">
 
 # Project Structure
 - `CryptoPass/` contains the SwiftUI app source, models, services, view models, views, and assets.
