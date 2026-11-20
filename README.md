@@ -1,5 +1,7 @@
 # CryptoPass for macOS
 
+This repository is the primary macOS password manager showcase. See [macOS-PasswordManager](https://github.com/QueenKM/macOS-PasswordManager) for an earlier app and [CryptoPassApp](https://github.com/QueenKM/CryptoPassApp) for the broader Apple-platform project.
+
 SwiftUI password manager project for macOS with Core Data persistence, encryption-oriented services, authentication flows, and a clean Xcode project layout prepared for public portfolio review.
 
 ### Features :
